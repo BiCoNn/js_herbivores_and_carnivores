@@ -10,13 +10,8 @@ class Animal {
   }
 
   minusHealth(delta) {
-    this.health += delta;
-
-    if (this.health <= 0) {
-      const i = Animal.alive.indexOf(this);
-
-      Animal.alive.splice(i, 1);
-    }
+    this.health -= delta;
+    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
   }
 }
 
@@ -39,7 +34,7 @@ class Carnivore extends Animal {
     if (target.hidden) {
       return;
     }
-    target.minusHealth(-50);
+    target.minusHealth(50);
   }
 }
 
